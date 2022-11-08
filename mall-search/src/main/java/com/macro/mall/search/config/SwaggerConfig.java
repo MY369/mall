@@ -9,6 +9,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Swagger API文档相关配置
+ * ///////////////////////////继承基础类, 设置api总体信息, 没必要开启安全验证
  * Created by macro on 2018/4/26.
  */
 @Configuration

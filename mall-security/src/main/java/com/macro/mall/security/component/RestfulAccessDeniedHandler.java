@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * //自定义的未授权处理类
+ * //其实就是没授权的时候过来, 给响应response加上失败的信息
  * 自定义返回结果：没有权限访问时
  * Created by macro on 2018/4/26.
  */
@@ -26,5 +28,6 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler{
         response.setContentType("application/json");
         response.getWriter().println(JSONUtil.parse(CommonResult.forbidden(e.getMessage())));
         response.getWriter().flush();
+        //当前端跨域访问没有权限的接口时，会出现跨域问题，只需要在没有权限访问的处理类RestfulAccessDeniedHandler中添加允许跨域访问的响应头即可。
     }
 }

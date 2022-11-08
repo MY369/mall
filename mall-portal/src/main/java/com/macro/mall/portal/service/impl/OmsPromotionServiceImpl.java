@@ -19,6 +19,7 @@ import java.util.*;
 /**
  * Created by macro on 2018/8/27.
  * 促销管理Service实现类
+ * ///////--------------------计算购物车的促销,返回促销信息对象的集合
  */
 @Service
 public class OmsPromotionServiceImpl implements OmsPromotionService {

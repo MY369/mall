@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 后台用户缓存操作Service实现类
+ * 后台用户 缓存操作
+ * 其实就是把 用户信息 和 用户资源信息都通过aop加入缓存了嘛, 这里负责查询和每次更新的时候删除
  * Created by macro on 2020/3/13.
  */
 @Service

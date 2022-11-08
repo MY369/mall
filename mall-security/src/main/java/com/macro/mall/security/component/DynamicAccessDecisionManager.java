@@ -17,10 +17,11 @@ import java.util.Iterator;
  */
 public class DynamicAccessDecisionManager implements AccessDecisionManager {
 
+    //鉴权操作, 传入当前的角色(当前用户的所有权限), 以及 总的权限表
     @Override
     public void decide(Authentication authentication, Object object,
                        Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
-        // 当接口未被配置资源时直接放行
+        // 当接口未被配置资源时(总权限表为空)直接放行
         if (CollUtil.isEmpty(configAttributes)) {
             return;
         }
@@ -31,7 +32,7 @@ public class DynamicAccessDecisionManager implements AccessDecisionManager {
             String needAuthority = configAttribute.getAttribute();
             for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
                 if (needAuthority.trim().equals(grantedAuthority.getAuthority())) {
-                    return;
+                    return;//资源匹配, 当前用户具有权限
                 }
             }
         }

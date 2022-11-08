@@ -57,9 +57,9 @@ public class WebLogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         //记录请求信息(通过Logstash传入Elasticsearch)
-        WebLog webLog = new WebLog();
-        Object result = joinPoint.proceed();
-        Signature signature = joinPoint.getSignature();
+        WebLog webLog = new WebLog();/////新建一个日志对象
+        Object result = joinPoint.proceed();///////////执行被代理类的业务逻辑
+        Signature signature = joinPoint.getSignature();///获取被代理类的相关信息,准备存到日志对象中
         MethodSignature methodSignature = (MethodSignature) signature;
         Method method = methodSignature.getMethod();
         if (method.isAnnotationPresent(ApiOperation.class)) {

@@ -9,6 +9,10 @@ import java.util.List;
  * 分页数据封装类
  * Created by macro on 2019/4/19.
  */
+
+////静态方法可以在接口实现类中直接使用,放在查询sql的前面就对该查询结果有效
+//PageHelper.startPage(pageNum, pageSize);
+
 public class CommonPage<T> {
     /**
      * 当前页码

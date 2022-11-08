@@ -21,6 +21,7 @@ import java.time.Duration;
 
 /**
  * Redis基础配置
+ * //////////////////主要是注入redistemplate, 序列化器, 缓存管理器(管理缓存时间)
  * Created by macro on 2020/6/19.
  */
 public class BaseRedisConfig {

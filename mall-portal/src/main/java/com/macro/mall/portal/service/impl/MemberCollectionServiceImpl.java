@@ -12,7 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
- * 会员收藏Service实现类
+ * 会员收藏 管理
+ * -----------就是对 会员收藏类 的增删改查
+ * ---------------完全基于mongodb来实现存储
  * Created by macro on 2018/8/2.
  */
 @Service

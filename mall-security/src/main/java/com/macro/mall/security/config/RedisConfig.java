@@ -5,7 +5,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Redis配置类
+ * Redis配置类:  直接继承common里的基础redis配置
  * Created by macro on 2020/3/2.
  */
 @EnableCaching

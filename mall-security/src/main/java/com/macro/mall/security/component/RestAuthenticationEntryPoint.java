@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * //自定义的未登录处理类
+ * //就是没登陆的时候过来, 给相应加上没登陆的错误信息
  * 自定义返回结果：未登录或登录过期
  * Created by macro on 2018/5/14.
  */

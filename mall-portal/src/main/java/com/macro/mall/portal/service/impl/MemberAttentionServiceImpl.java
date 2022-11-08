@@ -14,7 +14,10 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 /**
- * 会员关注Service实现类
+ * 会员品牌关注
+ * ---------------对会员品牌关注的增删改查
+ * ---------基于mongodb存储
+ *
  * Created by macro on 2018/8/2.
  */
 @Service

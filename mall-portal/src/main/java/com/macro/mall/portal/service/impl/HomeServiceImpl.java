@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * 首页内容管理Service实现类
+ * //用来获取首页的 总内容,  商品推荐, 专题推荐等等
  * Created by macro on 2019/1/28.
  */
 @Service

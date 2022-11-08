@@ -17,7 +17,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 前台订单管理Service实现类
+ * 前台商品管理
+ * -------------综合搜索商品, 获取树形分类, 获取商品所有信息(信息,属性,库存, 促销, 优惠..)
  * Created by macro on 2020/4/6.
  */
 @Service

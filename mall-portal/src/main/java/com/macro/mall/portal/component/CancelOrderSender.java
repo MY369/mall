@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 取消订单消息的生产者
+ *  //其实就是每次下单--> 发送一个TTL消息-->长时间没有得到处理(未付款)--->转发给死信队列--->被取消订单的消费者接收到-->取消订单
  * Created by macro on 2018/9/14.
  */
 @Component

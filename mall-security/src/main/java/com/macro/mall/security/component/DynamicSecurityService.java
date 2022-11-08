@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * 动态权限相关业务类
+ * //这个类在每个使用者中被实现, 目的是加载资源, 并存储为 (路径--资源)的形式
  * Created by macro on 2020/2/7.
  */
 public interface DynamicSecurityService {

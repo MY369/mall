@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Controller层的日志封装类
+ * 用来aop的通知方法中, 存储获取的被代理类的信息
  * Created by macro on 2018/4/26.
  */
 @Data

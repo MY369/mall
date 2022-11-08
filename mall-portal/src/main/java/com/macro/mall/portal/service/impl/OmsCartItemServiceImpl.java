@@ -21,7 +21,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 购物车管理Service实现类
+ * 前台购物车管理
+ *
+ * //---------------- 就是前端那个购物车页面上, 对于购物车项的增删改查!!!
  * Created by macro on 2018/8/2.
  */
 @Service

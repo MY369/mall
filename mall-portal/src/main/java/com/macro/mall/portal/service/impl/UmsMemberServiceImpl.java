@@ -34,6 +34,8 @@ import java.util.Random;
 
 /**
  * 会员管理Service实现类
+ *--------------------主要负责的是用户的增删改查, 注册登录, 验证码业务
+ * -----------------利用了会员数据redis缓存的业务类,每次查询先查redis, 每次存储存入redis, 每次更新删除redis
  * Created by macro on 2018/8/3.
  */
 @Service

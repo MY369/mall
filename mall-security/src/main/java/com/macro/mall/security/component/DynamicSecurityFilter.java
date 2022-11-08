@@ -16,6 +16,8 @@ import java.io.IOException;
 
 /**
  * 动态权限过滤器，用于实现基于路径的动态权限过滤
+ * 首先我们需要创建一个过滤器，用于实现动态权限控制，这里需要注意的是`doFilter`方法，
+ * 所有的鉴权操作都会在`super.beforeInvocation(fi)`中进行。
  * Created by macro on 2020/2/7.
  */
 public class DynamicSecurityFilter extends AbstractSecurityInterceptor implements Filter {
@@ -52,6 +54,10 @@ public class DynamicSecurityFilter extends AbstractSecurityInterceptor implement
             }
         }
         //此处会调用AccessDecisionManager中的decide方法进行鉴权操作
+        //在DynamicSecurityFilter中调用super.beforeInvocation(fi)方法时会调用AccessDecisionManager中的decide方法用于鉴权操作，
+        // 而decide方法中的configAttributes参数(就是配置好的访问当前接口所需要的权限)会通过SecurityMetadataSource中的getAttributes方法来获取
+        //所以1. 重写SecurityMetadataSource中的getAttributes方法来获取访问路径所需的资源
+        //   2. 重写AccessDecisionManager中的decide方法 进行鉴权操作
         InterceptorStatusToken token = super.beforeInvocation(fi);
         try {
             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());

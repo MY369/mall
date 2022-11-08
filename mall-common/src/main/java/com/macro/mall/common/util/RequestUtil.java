@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 
 /**
  * 请求工具类
+ * /////////////////////用来获取 本机ip
  * Created by macro on 2020/10/8.
  */
 public class RequestUtil {

@@ -15,29 +15,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * JwtToken生成的工具类
- * JWT token的格式：header.payload.signature
- * header的格式（算法、token的类型）：
- * {"alg": "HS512","typ": "JWT"}
- * payload的格式（用户名、创建时间、生成时间）：
- * {"sub":"wang","created":1489079981393,"exp":1489684781}
- * signature的生成算法：
- * HMACSHA512(base64UrlEncode(header) + "." +base64UrlEncode(payload),secret)
+ * -----------------JwtToken生成的工具类------------------------
+ *      JWT token的格式：
+ *           header.payload.signature
+ *       header的格式（算法、token的类型）：
+ *          {"alg": "HS512","typ": "JWT"}
+ *      payload(claims)的格式（用户名、创建时间、生成时间）：
+ *           {"sub":"wang","created":1489079981393,"exp":1489684781}
+ *      signature的生成算法：
+ *      HMACSHA512(base64UrlEncode(header) + "." +base64UrlEncode(payload),secret)
  * Created by macro on 2018/4/26.
  */
 public class JwtTokenUtil {
+    //日志对象
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
+    //用户名的键
     private static final String CLAIM_KEY_USERNAME = "sub";
+    //token生成时间的键
     private static final String CLAIM_KEY_CREATED = "created";
+    //密钥
     @Value("${jwt.secret}")
     private String secret;
+    //过期时间
     @Value("${jwt.expiration}")
     private Long expiration;
+    //
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
     /**
-     * 根据负责生成JWT的token
+     * 根据负载生成JWT的token                        claims-加密->token
      */
     private String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
@@ -48,7 +55,7 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 从token中获取JWT中的负载
+     * 从token中获取JWT中的负载                         token-解密->claims
      */
     private Claims getClaimsFromToken(String token) {
         Claims claims = null;
@@ -71,7 +78,7 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 从token中获取登录用户名
+     * 从token中获取登录用户名           token-->chaims-->username
      */
     public String getUserNameFromToken(String token) {
         String username;
@@ -85,7 +92,7 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 验证token是否还有效
+     * 验证token是否还有效               token-->chaims-->用户名-->与数据库比对
      *
      * @param token       客户端传入的token
      * @param userDetails 从数据库中查询出来的用户信息
@@ -96,7 +103,7 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 判断token是否已经失效
+     * 判断token是否已经失效            token-->chaims-->过期时间-->与数据库比对
      */
     private boolean isTokenExpired(String token) {
         Date expiredDate = getExpiredDateFromToken(token);
@@ -104,7 +111,7 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 从token中获取过期时间
+     * 从token中获取过期时间     token-->chaims-->过期时间
      */
     private Date getExpiredDateFromToken(String token) {
         Claims claims = getClaimsFromToken(token);
@@ -112,7 +119,7 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 根据用户信息生成token
+     * 根据用户信息生成token       用户名+创建时间-->chaims-->token
      */
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();

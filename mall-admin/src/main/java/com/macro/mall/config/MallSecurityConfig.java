@@ -19,6 +19,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * mall-security模块相关配置
+ * //继承`mall-security`中的SecurityConfig配置,并且配置一个UserDetailsService接口的实现类，用于获取登录用户详情.
+ * //在配置文件中配置 认证白名单
  * Created by macro on 2019/11/9.
  */
 @Configuration

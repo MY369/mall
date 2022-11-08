@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  * Created by macro on 2020/3/3.
  */
 public class RedisServiceImpl implements RedisService {
+    ////////////////就是通过注入RedisTemplate来实现的
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 

@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 
 /**
  * UmsMemberCacheService实现类
+ * ---------会员信息缓存业务    ---基于redis
+ * -----------所有缓存全部aop织入了trycatch
+ * ------1. 对于会员的缓存, 每次查的时候先查缓存, 每次查完了加入缓存, 每次更新删除缓存
+ * ------2. 对于验证码的缓存, 额外加了自定义注解, 用来在织入时特殊处理,抛出异常, 因为验证码只存在缓存中, 出问题必须抛出异常
  * Created by macro on 2020/3/14.
  */
 @Service

@@ -9,6 +9,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Swagger API文档相关配置
+ * ////////////////////////继承基础类, 配置一些页面说明信息
  * Created by macro on 2018/4/26.
  */
 @Configuration

@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * 搜索商品的属性信息
+ * ////////////包括搜索商品属性要用的: 属性名,属性类型,属性值
  * Created by macro on 2018/6/27.
  */
 @Data

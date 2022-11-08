@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * 搜索商品管理Controller
+ * /////////////////////就是给搜索按钮调用的, 有的复杂查询可能要先选好几个框(好多输入), 然后查询
  * Created by macro on 2018/6/19.
  */
 @Controller

@@ -16,7 +16,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 会员浏览记录管理Service实现类
+ * 会员浏览记录 管理
+ * ////---------会员浏览记录的增删改查,   每个浏览记录是根对应于会员id来存的, 所以每次需要先查看当前的会员的id是多少
+ * /////-------存储方式完全就是用的mongodb
  * Created by macro on 2018/8/3.
  */
 @Service

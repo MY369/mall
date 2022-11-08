@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 
 /**
  * Swagger基础配置
+ * /////////////////////使用者需要自己再配置具体的 页面说明信息
  * Created by macro on 2020/7/16.
  */
 public abstract class BaseSwaggerConfig {
@@ -31,17 +32,19 @@ public abstract class BaseSwaggerConfig {
     public Docket createRestApi() {
         SwaggerProperties swaggerProperties = swaggerProperties();
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo(swaggerProperties))
-                .select()
+                .apiInfo(apiInfo(swaggerProperties))//api信息展示
+                .select()//通过.select()方法，去配置扫描接口
                 .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getApiBasePackage()))
                 .paths(PathSelectors.any())
                 .build();
-        if (swaggerProperties.isEnableSecurity()) {
+        if (swaggerProperties.isEnableSecurity()) {//如果启用登录认证
+            ////////添加登录认证, 分别配置请求头信息, 和需要登录认证的路径
             docket.securitySchemes(securitySchemes()).securityContexts(securityContexts());
         }
         return docket;
     }
 
+    //api接口页面显示的一些信息, 都在配置文件中读取
     private ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
         return new ApiInfoBuilder()
                 .title(swaggerProperties.getTitle())
@@ -51,6 +54,7 @@ public abstract class BaseSwaggerConfig {
                 .build();
     }
 
+    ////设置请求头信息: Authorization,  之后只要是调用接口,都自带Authorization头
     private List<SecurityScheme> securitySchemes() {
         //设置请求头信息
         List<SecurityScheme> result = new ArrayList<>();

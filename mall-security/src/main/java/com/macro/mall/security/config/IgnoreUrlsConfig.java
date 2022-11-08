@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SpringSecurity白名单资源路径配置
+ * 白名单配置类: 用于配置白名单资源路径  ------从application.yml中获取不需要安全保护的资源路径
  * Created by macro on 2018/11/5.
  */
 @Getter

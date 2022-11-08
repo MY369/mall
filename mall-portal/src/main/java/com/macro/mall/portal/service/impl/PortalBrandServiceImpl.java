@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * 前台品牌管理Service实现类
+ * ------就是在分页查询一下 品牌或者商品 , 用来显示在主页上
  * Created by macro on 2020/5/15.
  */
 @Service

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMqConfig {
 
     /**
-     * 订单消息实际消费队列所绑定的交换机
+     * 订单消息实际消费队列所绑定的交换机   ----普通消息交换机 直连类型
      */
     @Bean
     DirectExchange orderDirect() {
@@ -24,7 +24,7 @@ public class RabbitMqConfig {
     }
 
     /**
-     * 订单延迟队列队列所绑定的交换机
+     * 订单延迟队列队列所绑定的交换机      ----延时消息交换机  直连类型
      */
     @Bean
     DirectExchange orderTtlDirect() {
@@ -43,7 +43,7 @@ public class RabbitMqConfig {
     }
 
     /**
-     * 订单延迟队列（死信队列）
+     * 订单延迟队列        -----死信队列队列， 延时之后死亡，转发到其他交换机路由到另一个队列
      */
     @Bean
     public Queue orderTtlQueue() {
@@ -59,10 +59,10 @@ public class RabbitMqConfig {
      */
     @Bean
     Binding orderBinding(DirectExchange orderDirect,Queue orderQueue){
-        return BindingBuilder
-                .bind(orderQueue)
-                .to(orderDirect)
-                .with(QueueEnum.QUEUE_ORDER_CANCEL.getRouteKey());
+        return BindingBuilder  //绑定关系构造器
+                .bind(orderQueue)//绑定普通消息队列
+                .to(orderDirect)//到普通消息交换机
+                .with(QueueEnum.QUEUE_ORDER_CANCEL.getRouteKey()); //路由键为普通消息的路由键
     }
 
     /**

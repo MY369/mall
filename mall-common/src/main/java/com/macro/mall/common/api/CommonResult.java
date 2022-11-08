@@ -2,6 +2,7 @@ package com.macro.mall.common.api;
 
 /**
  * 通用返回对象
+ * ///////////这个对象包含了三个属性:  错误码, 错误信息描述, 本来想返回的的数据对象!!!!!!!
  * Created by macro on 2019/4/19.
  */
 public class CommonResult<T> {
